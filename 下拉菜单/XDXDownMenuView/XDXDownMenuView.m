@@ -92,6 +92,10 @@
     }
 }
 
+-(void)setTypeArr:(NSArray *)typeArr{
+    _typeArr = typeArr;
+}
+
 - (void)setDefaulTitleArray:(NSArray *)defaulTitleArray
 {
     _defaulTitleArray = defaulTitleArray;
@@ -118,12 +122,13 @@
 {
     _lastClickedBtn = btn;
     [self removeSubviews];
+    self.type = [_typeArr[btn.tag-1] integerValue];
     self.dataSource = self.dataSourceArr[btn.tag-kViewTagConstant];
     
-    if (self.type == DownMenuTab) {
+    if ([_typeArr[btn.tag-1] integerValue] == DownMenuTab) {
         [self showTab];
     }
-    if (self.type == DownMenuCol) {
+    if ([_typeArr[btn.tag-1] integerValue] == DownMenuCol) {
         [self showCol];
     }
     [self animationWhenClickTitleBtn:btn];
@@ -205,7 +210,7 @@
     [self.window addSubview:self.bg1];
     [self.window addSubview:self.dropDownMenuTableView];
     [UIView animateWithDuration:0.25 animations:^{
-        self.dropDownMenuTableView.frame = CGRectMake(0, self.startY, KScreenWidth, MIN(kCellHeight * 5, kCellHeight * self.dataSource.count));
+        self.dropDownMenuTableView.frame = CGRectMake(0, self.startY, KScreenWidth, MIN(kCellHeight * 7, kCellHeight * self.dataSource.count));
         
     } completion:^(BOOL finished) {
         [self.dropDownMenuTableView reloadData];
@@ -295,7 +300,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return kCellHeight;
 }
 
 

@@ -22,15 +22,13 @@
     UILabel * lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 375, 30)];
     lb.textColor = [UIColor redColor];
     lb.textAlignment = NSTextAlignmentCenter;
-    lb.text = @"有问题可以咨询QQ:2499889998";
     [self.view addSubview:lb];
 
     XDXDownMenuView * downMenuView = [[XDXDownMenuView alloc] initWithFrame:CGRectMake(0, 110, 375, 40)];
     downMenuView.delegate = self;
     downMenuView.startY = CGRectGetMaxY(downMenuView.frame);
     downMenuView.dataSourceArr = @[@[@"1-3年",@"3-5年",@"5-10年",@"10年以上"],@[@"OC",@"php",@"Swift",@"JAVA"],@[@"iOS",@"android",@"web",@"小程序"]].mutableCopy;
-    //type 为 col 才有需要设置 colCount， colCount = 1 效果跟表类似
-    downMenuView.type = DownMenuCol;
+    downMenuView.typeArr = @[@(0),@(1),@(0)] ;
     downMenuView.colCount = 2;
     downMenuView.defaulTitleArray = @[@"年限",@"语言",@"项目"];
     [self.view addSubview:downMenuView];

@@ -45,6 +45,8 @@ typedef void (^ChooseConditionBlock)(NSString *, NSArray *);
 
 @property (nonatomic, strong) NSDictionary *stateConfigDict;
 
+@property (nonatomic, strong) NSArray *typeArr;
+
 @property (nonatomic, assign) NSInteger colCount;
 
 @end
